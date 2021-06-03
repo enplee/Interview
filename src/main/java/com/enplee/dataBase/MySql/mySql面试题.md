@@ -94,14 +94,20 @@ B树和B+树
 5. 执行器: 执行方案，返回从存储引擎中取得数据。
 ```
 
-+ log( WAL知道吗？哪个log用了这个？那顺便介绍下三大log)
++ log( WAL知道吗？哪个log用了这个？那顺便介绍下三大log)：   [参考文章](https://mp.weixin.qq.com/s?__biz=MzAwNDA2OTM1Ng==&mid=2453141708&idx=1&sn=679b1e2755da2cf20904928242d32411&scene=21#wechat_redirect)
 
 ```
 Binlog: 逻辑日志，在server层追加式的记录所有的写操作，并以二进制的形式保存在磁盘中，用于主从复制。属于Server层。
-redolog：属于InnoDB存储引擎的，保证事务的安全。事务未提交前，记录事务的修改。保证数据即使端点也能顺利写到磁盘。
-undolog: 记录事务发生之前的版本，记录了反向的操作，用来实现回滚。
+redolog：属于InnoDB存储引擎的，保证事务的安全。事务未提交前，记录事务的修改。保证数据即使crash也能顺利写到磁盘。
+undolog: 保证事务的原子性，记录事务发生之前的版本，记录了反向的操作，用来实现回滚。
 
 WAL: write ahead log 日志现行技术 先写日志再落盘 保证数据完整写入磁盘
+
+binlog和redolog的区别？
+1. binlog写入的是每次数据库的操作，也就是sql语句，属于逻辑操作日志。redolog写入的是具体页的修改，属于是存储的物理修改
+2. binlog记录的是全量的修改，追加写不会覆盖; redolog只是为了记录某个事务的物理修改，是可覆盖的。
+3. binlog通常用来做主从同步的数据恢复，redolog用来保证事务持久性。
+4. binlog是server层的，redolog只属于InnoDB存储引擎。
 ```
 
 + 了解MySql的log的两阶段提交么？
