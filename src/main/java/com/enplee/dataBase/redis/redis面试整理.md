@@ -177,6 +177,8 @@ scard/sinterstore/sunion
 ```
 排序set，去重根据score排序。
 
+实现方式: 跳表
+
 常用命令:
 zadd/zcard
 zscore/zrange
