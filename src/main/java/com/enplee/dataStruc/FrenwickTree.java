@@ -1,5 +1,10 @@
 package com.enplee.dataStruc;
 
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.List;
+
 public class FrenwickTree {
     private int[] tree;
     private int len;
@@ -17,11 +22,19 @@ public class FrenwickTree {
             pos += lowBit(pos);
         }
     }
-    public void query(int pos) {
+    public int query(int pos) {
         int sum = 0;
         while (pos>0) {
             sum += tree[pos];
             pos -= lowBit(pos);
         }
+        return sum;
     }
 }
+
+
+
+
+
+
+
