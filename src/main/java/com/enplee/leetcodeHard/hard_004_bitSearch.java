@@ -83,6 +83,8 @@ public class hard_004_bitSearch {
         if(map.get(o1).equals(map.get(o2))){
             return o1.compareTo(o2);
         }
+        PriorityQueue<Integer> queue = new PriorityQueue<>((o11, o21) -> o21 - o11);
+
         return map.get(o1)-map.get(o2);
     }
 }

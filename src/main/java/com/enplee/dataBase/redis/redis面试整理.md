@@ -252,3 +252,4 @@ RDB不准确，AOF准确但是量大恢复慢，所以使用混合持久化。 R
 
 [参考链接](https://mp.weixin.qq.com/s?__biz=Mzg5MzU2NDgyNw==&mid=2247487143&idx=1&sn=b095c730e2180d7461c6c0aaa55f495f&source=41#wechat_redirect)
 
+[整理面试比较全面的文章](https://mp.weixin.qq.com/s?__biz=Mzg5ODU2ODczMQ==&mid=2247485345&idx=1&sn=256268ef3ea7237998d38da60a0fc3cc&chksm=c061c0d5f71649c3a803d2517f1b3673676b598421aaa16421b7b3aefed0b142c4b199f1bde4&scene=132#wechat_redirect)
