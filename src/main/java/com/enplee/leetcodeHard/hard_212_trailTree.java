@@ -77,12 +77,12 @@ class TrailTree {
         point.setEnd(true);
     }
 }
-class TrailNode {
+class Node {
 
     Node[] childs;
     boolean isEnd;
 
-    public TrailNode() {
+    public Node() {
         this.childs = new Node[26];
         this.isEnd = false;
     }

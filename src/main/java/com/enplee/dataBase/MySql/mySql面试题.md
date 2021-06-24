@@ -109,7 +109,7 @@ B树和B+树
 5. 执行器: 执行方案，返回从存储引擎中取得数据。
 ```
 
-+ log( WAL知道吗？哪个log用了这个？那顺便介绍下三大log)：   [参考文章](https://mp.weixin.qq.com/s?__biz=MzAwNDA2OTM1Ng==&mid=2453141708&idx=1&sn=679b1e2755da2cf20904928242d32411&scene=21#wechat_redirect)
++ log( WAL知道吗？哪个log用了这个？那顺便介绍下三大log)：   [参考文章](https://mp.weixin.qq.com/s?__biz=MzAwNDA2OTM1Ng==&mid=2453141708&idx=1&sn=679b1e2755da2cf20904928242d32411&scene=21#wechat_redirect) [参考文章](https://www.cnblogs.com/ZhuChangwu/p/14096575.html)
 
 ```
 Binlog: 逻辑日志，在server层追加式的记录所有的写操作，并以二进制的形式保存在磁盘中，用于主从复制。属于Server层。
