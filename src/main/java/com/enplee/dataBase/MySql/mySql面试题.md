@@ -28,7 +28,6 @@ B树和B+树
 2. B+树增加了指针指向相邻的叶子节点，方便做范围查询
 3. B树的存储导致了可能检索的效率不稳定，而B+树都是从跟节点到叶子节点，效率稳定
 红黑树 B+树
-
 ```
 
 ### 二. 索引类型
@@ -38,6 +37,8 @@ B树和B+树
 ```
 数据库表中主键使用的索引就是主键索引，一张表只能规定一个主键，不能为null，不可重复。
 没有主键，会检查有没有唯一索引的字段，有认为为主键，否则穿件一个自增的主键
+
+PRIMARY KEY索引和UNIQUE索引非常类似。事实上，PRIMARY KEY索引仅是一个具有名称PRIMARY的UNIQUE索引。这表示一个表只能包含一个PRIMARY KEY，因为一个表中不可能具有两个同名的索引.
 ```
 
 + 辅助索引(唯一索引与普通索引的区别是什么？)
@@ -58,6 +59,9 @@ B树和B+树
 非聚集索引叶子节点存放的不是真是真实的数据，而是指向数据的指针或者主键。 相当于索引和数据是分离的。
 非聚簇索引缺点？  非聚簇索引最大的问题是会产生回表，也就是最后还是要到表中做一次查询
 一定会发生回表？  不一定，如果发生了索引覆盖，比如查询的就是key，那么不需要回表
+3. 索引覆盖
+就是索引中的key本身就是需要查询的内容,此时就发生了索引覆盖。
+索引覆盖的应用: 实际应用中可以将热点查询字段按照联合索引的方式构建,这样就能通过索引覆盖提高查询效率。
 ```
 
 + 联合索引和最左匹配原则
@@ -74,6 +78,29 @@ B树和B+树
 2. 联合索引，查询不是1,12,123
 3. 对查询字段进行运算或者使用函数，不会触发索引
 4. mySql优化器认为全表扫描优于走索引，索引失效。
+```
+
+#### 代码
+
++ 创建索引
+
+```sql
+// 1. alter table xxx add index xxx
+ALTER TABLE table ADD INDEX (col)
+ALTER TABLE table ADD INDEX (col1,col2,col3) # 组合索引
+ALTER TABLE table ADD UNIQUE (col)
+ALTER TABLE table ADD PRIMIARY KEY (col)
+
+// 2. create index
+CREATE INDEX index_name ON table_name (col)
+CREATE UNIQUE INDEX index_name ON table_name (col)
+```
+
++ 查找和删除索引
+
+```mysql
+SHOW INDEX FROM tablename;
+ALTER TABLE table DROP INDEX/UNIQUE/PRIMARY KEY
 ```
 
 ### 三.存储引擎
@@ -153,5 +180,21 @@ binlog和redolog的区别？
 	没有索引
 	有索引但是没命中: 运算和函数
 	mysql采样出现偏差，优化器不走索引
+```
+
+
+
++ explain指令
+
+```
+当构建了一个sql语句,我们可以通过explain指令来分析这个sql语句,explain语句可以获得sql语句的执行计划,可以查看有没有走索引的问题。
+```
+
++ count(id)、count(*)、count(1) 统计行数
+
+```
+统计行数可以同count(主键)的方式来统计,走主键索引.
+count(字段)不会统计到字段为null的情况。
+count(*)和count(1)在5.6之后的mySql会做优化,走优化器认为最快的语句。
 ```
 

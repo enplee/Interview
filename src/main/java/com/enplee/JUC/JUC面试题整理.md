@@ -127,7 +127,7 @@ public class SemphoreTest { // 信号量可以用来做限流,搞定工作的线
     public static void main(String[] args) {
         Semaphore semaphore = new Semaphore(3);
         ExecutorService ec = Executors.newFixedThreadPool(5);
-        for(int i=0;i<4;i++) {
+        for(int i=0;i<4;i++) {DLFJK;SDLF
             ec.execute(() -> {
                 try {
                     semaphore.acquire();
