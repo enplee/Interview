@@ -1,4 +1,4 @@
-package com.enplee.leetcodeHard.weekgame;
+package com.enplee.leetcodeHard;
 
 import java.util.Arrays;
 import java.util.Deque;

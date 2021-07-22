@@ -200,6 +200,7 @@ scard/sinterstore/sunion
 排序set，去重根据score排序。
 
 实现方式: 跳表
+https://blog.csdn.net/qq_24950043/article/details/118305731
 
 常用命令:
 zadd/zcard
