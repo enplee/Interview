@@ -118,6 +118,7 @@ ALTER TABLE table DROP INDEX/UNIQUE/PRIMARY KEY
 
 ```
 快照读+递增的事务ID
+https://www.cnblogs.com/myseries/p/10930910.html
 ```
 
 + 一条SQL语句执行过程

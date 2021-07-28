@@ -1,8 +1,10 @@
+
+
 ## TCP面试整理 [参考文档](https://mp.weixin.qq.com/s?__biz=MzAwNDA2OTM1Ng==&mid=2453143119&idx=2&sn=d9c8716af1606e939ed589a404baebc7&scene=21#wechat_redirect)
 
 ### 一. TCP基础(简述 TCP 的报文头部结构)
 
-![图片](D:\project\java\github.com\enplee\Interview\src\main\java\com\enplee\Network\image\tcp头部格式.webp)
+![图片](image\tcp头部格式.webp)
 
 + 序列号: 建立连接时候生成的随机数作为初始值，通过SYN包发送给接收端主机，每发送一次就累计一次数据的字节大小。用来表示数据包的次序，解决网络包乱序。
 + 确认应答号: 表示这个应答号之前的序列号数据都被接收了，用来解决不丢包的问题。
